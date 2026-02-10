@@ -23,3 +23,8 @@
     src: index.html
     dest: /var/www/html/index.html
   notify: Restart nginx
+
+- name: Restart nginx
+  systemd:
+    name: nginx
+    state: restarted
