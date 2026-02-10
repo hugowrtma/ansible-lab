@@ -1,22 +1,27 @@
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/hugowrtma/ansible-lab.git'
-            }
-        }
+  triggers {
+    githubPush()
+  }
 
-        stage('Deploy with Ansible') {
-            steps {
-                sh '''
-                ansible-playbook ansible/playbook.yml \
-                  -i ansible/inventory/hosts.ini \
-                  --become
-                '''
-            }
-        }
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
     }
+
+    stage('Ping Host') {
+      steps {
+        sh 'ansible all -m ping'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        sh 'ansible-playbook ansible/playbooks/deploy.yml'
+      }
+    }
+  }
 }
