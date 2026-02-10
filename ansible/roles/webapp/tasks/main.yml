@@ -22,6 +22,7 @@
   copy:
     src: index.html
     dest: /var/www/html/index.html
+    force: yes
   notify: Restart nginx
 
 - name: Restart nginx
