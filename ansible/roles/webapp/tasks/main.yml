@@ -1,0 +1,25 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Enable nginx
+  systemd:
+    name: nginx
+    enabled: yes
+
+- name: Start nginx
+  systemd:
+    name: nginx
+    state: started
+
+- name: Deploy index.html
+  copy:
+    src: ../files/index.html
+    dest: /var/www/html/index.html
+  notify: Restart nginx

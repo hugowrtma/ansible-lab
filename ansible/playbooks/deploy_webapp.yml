@@ -1,0 +1,6 @@
+- name: Deploy Web App
+  hosts: web
+  become: yes
+
+  roles:
+    - webapp
