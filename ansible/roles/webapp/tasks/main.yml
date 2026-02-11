@@ -1,31 +1,18 @@
----
-- name: Update apt cache
-  apt:
-    update_cache: yes
-
 - name: Install nginx
   apt:
     name: nginx
     state: present
+    update_cache: yes
 
-- name: Enable nginx
-  systemd:
-    name: nginx
-    enabled: yes
-
-- name: Start nginx
-  systemd:
-    name: nginx
-    state: started
-
-- name: Deploy index.html
+- name: Copy index.html
   copy:
     src: index.html
-    dest: /var/www/html/index.html
-    force: yes
-  notify: Restart nginx
+    dest: /usr/share/nginx/html/index.html
+    owner: www-data
+    group: www-data
+    mode: '0644'
 
 - name: Restart nginx
-  systemd:
+  service:
     name: nginx
     state: restarted

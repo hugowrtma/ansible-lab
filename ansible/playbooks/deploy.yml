@@ -1,21 +1,4 @@
 - hosts: web
   become: yes
-  tasks:
-    - name: Install nginx
-      apt:
-        name: nginx
-        state: present
-        update_cache: yes
-
-    - name: Copy web files
-      copy:
-        src: ../../web/
-        dest: /usr/share/nginx/html/
-        owner: www-data
-        group: www-data
-        mode: '0644'
-
-    - name: Restart nginx
-      service:
-        name: nginx
-        state: restarted
+  roles:
+    - webapp
