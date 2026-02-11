@@ -1,0 +1,371 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    color: #f0f0f0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to bottom, #000000, #1a1a1a);
+    padding: 60px 0 40px;
+    text-align: center;
+    border-bottom: 3px solid #ff6b6b;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 107, 107, 0.03) 2px,
+        rgba(255, 107, 107, 0.03) 4px
+    );
+    pointer-events: none;
+}
+
+header h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 8px;
+    color: #ff6b6b;
+    text-shadow: 3px 3px 0 #000, 5px 5px 10px rgba(255, 107, 107, 0.5);
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: #cccccc;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* Navigation */
+nav {
+    background: #000000;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+nav li {
+    flex: 1;
+    text-align: center;
+}
+
+nav a {
+    display: block;
+    padding: 18px 30px;
+    color: #f0f0f0;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border-right: 1px solid #333;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav li:last-child a {
+    border-right: none;
+}
+
+nav a:hover {
+    background: #ff6b6b;
+    color: #000;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #ff6b6b;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Main Content */
+main {
+    padding: 60px 20px;
+}
+
+.section {
+    margin-bottom: 80px;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: #ff6b6b;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    border-bottom: 3px solid #ff6b6b;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.content-box {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-left: 5px solid #ff6b6b;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.content-box p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.content-box em {
+    color: #ff6b6b;
+    font-style: italic;
+}
+
+/* Members Grid */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.member-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 30px;
+    border: 2px solid #333;
+    border-left: 5px solid #ff6b6b;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.member-card:hover::before {
+    opacity: 1;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+    border-color: #ff6b6b;
+}
+
+.member-card h3 {
+    font-size: 1.5rem;
+    color: #ff6b6b;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.role {
+    color: #aaa;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.member-card p:last-child {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Albums Timeline */
+.albums-timeline {
+    margin-top: 40px;
+    position: relative;
+}
+
+.albums-timeline::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #ff6b6b;
+}
+
+.album {
+    position: relative;
+    padding-left: 140px;
+    margin-bottom: 50px;
+}
+
+.year {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 70px;
+    background: #ff6b6b;
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #1a1a1a, 0 0 20px rgba(255, 107, 107, 0.5);
+    z-index: 1;
+}
+
+.album h3 {
+    font-size: 1.8rem;
+    color: #ff6b6b;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.album p {
+    color: #ccc;
+    line-height: 1.7;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-left: 3px solid #ff6b6b;
+}
+
+/* Footer */
+footer {
+    background: #000000;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 3px solid #ff6b6b;
+    margin-top: 60px;
+}
+
+footer p {
+    color: #888;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+    }
+    
+    nav li {
+        flex-basis: 50%;
+    }
+    
+    nav a {
+        padding: 15px 20px;
+        font-size: 0.9rem;
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+    
+    .section h2 {
+        font-size: 2rem;
+    }
+    
+    .content-box {
+        padding: 25px;
+    }
+    
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .albums-timeline::before {
+        left: 35px;
+    }
+    
+    .album {
+        padding-left: 90px;
+    }
+    
+    .year {
+        width: 60px;
+        height: 60px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    
+    nav a {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+    
+    .section h2 {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+    }
+    
+    .album h3 {
+        font-size: 1.4rem;
+    }
+}
